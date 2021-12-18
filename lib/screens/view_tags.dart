@@ -66,6 +66,7 @@ class view_tags {
                       children: <Widget>[
                         InkWell(
                           onTap: () {
+                            clearText();
                             Navigator.pop(context);
                           },
                           child: Container(
@@ -454,6 +455,7 @@ class view_tags {
     return RaisedButton(
       onPressed: () {
         Clipboard.setData(ClipboardData(text: tags)).then((_) {
+          clearText();
           Navigator.pop(context); // hiding bottom sheet
           hashtag_serviceimpl.showSnackbar(context,
               'Hashtags are copied to clipboard', 3, Colors.lightGreen);

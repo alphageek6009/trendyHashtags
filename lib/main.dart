@@ -228,6 +228,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           GestureDetector(
             onTap: () {
               Clipboard.setData(ClipboardData(text: text)).then((_) {
+                this._editController.clear();
                 hashtag_serviceimpl.showSnackbar(context,
                     'Hashtags are copied to clipboard', 3, Colors.lightGreen);
               });

@@ -117,7 +117,7 @@ Widget fullAppbar(BuildContext context) {
 
 Widget emptyAppbar() {
   return PreferredSize(
-    preferredSize: Size.fromHeight(75.0),
+    preferredSize: Size.fromHeight(80.0),
     child: GradientAppBar(
       flexibleSpace: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,18 +131,22 @@ Widget emptyAppbar() {
         ],
       ),
       title: Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: EdgeInsets.only(top: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: const <Widget>[
             Text(
               'TrendyHashtags',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                  letterSpacing: 4.0,
+                  fontFamily: "Billabong",
+                 // color: Colors.black,
+                  fontSize: 25,fontWeight: FontWeight.w700),
             ),
             Text(
               'Place where you find trending instagram hashtags',
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
+              style: TextStyle(fontSize: 12,color: Colors.white70, fontWeight: FontWeight.w400),
             ),
           ],
         ),

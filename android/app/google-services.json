@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "297441193166",
+    "project_id": "trendyhashtags-97e4f",
+    "storage_bucket": "trendyhashtags-97e4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297441193166:android:b35c08fe97fb0f91d1349f",
+        "android_client_info": {
+          "package_name": "com.alphageek.trendyhashtags.trendyhashtags"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297441193166-s2udevc5jt8e4nrsq3fmsnvmia7nlr15.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk1K1Ayft5TCgC-gJUeFLLV7MiZrT3zQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297441193166-s2udevc5jt8e4nrsq3fmsnvmia7nlr15.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

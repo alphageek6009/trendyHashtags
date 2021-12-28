@@ -324,17 +324,16 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Widget categoryWidegt(context, screen) {
     return FutureBuilder(
       builder: (context, projectSnap) {
-        if (projectSnap.connectionState == ConnectionState.none &&
-            projectSnap.hasData == null) {
-          //print('project snapshot data is: ${projectSnap.data}');
-          return Container();
-        }
         if(screen == 'CAT'){
+          if (projectSnap.connectionState == ConnectionState.none &&
+              projectSnap.hasData == null) {
+            //print('project snapshot data is: ${projectSnap.data}');
+            return Container();
+          }
           return categoriesScreen(context);
         }else {
           return homeScreen(context);
         }
-
       },
       future: get_categories_boxes(context),
     );
@@ -357,49 +356,50 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   List<Widget> get_categories(BuildContext context) {
     List<InkWell> containers = [];
-    CustomColors.items.forEach((element) {
-      String imagePath = element.icon;
-      var trendingHashtag = jsonDecode(hashtag_serviceimpl.localStorage
-          .getString(element.title.toString() + '_top'));
-      containers.add(InkWell(
-          onTap: () {
-            _tabController.index = 0;
-            modal.mainBottomSheet(context, trendingHashtag, _tabController,
-                _editController, false, _formKey);
-          },
-          child: Container(
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: 55,
-                      height: 55,
-                      child: Image.asset(imagePath),
-                      decoration: new BoxDecoration(
-                        color: CustomColors.BellGrey,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(70.0),
-                        ),
-                        /*image: new DecorationImage(
+    if(hashtag_serviceimpl.localStorage != null) {
+      CustomColors.items.forEach((element) {
+        String imagePath = element.icon;
+        var trendingHashtag = jsonDecode(hashtag_serviceimpl.localStorage
+            .getString(element.title.toString() + '_top'));
+        containers.add(InkWell(
+            onTap: () {
+              _tabController.index = 0;
+              modal.mainBottomSheet(context, trendingHashtag, _tabController,
+                  _editController, false, _formKey);
+            },
+            child: Container(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: 55,
+                        height: 55,
+                        child: Image.asset(imagePath),
+                        decoration: new BoxDecoration(
+                          color: CustomColors.BellGrey,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(70.0),
+                          ),
+                          /*image: new DecorationImage(
                           image: new AssetImage(imagePath),
                           fit: BoxFit.cover,
                         ),*/
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      element.title.toString(),
-                      style: TextStyle(
-                          fontSize: 14,
-                          color: CustomColors.TextWhite,
-                          fontWeight: FontWeight.w600),
-                    ),
+                      SizedBox(height: 5),
+                      Text(
+                        element.title.toString(),
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: CustomColors.TextWhite,
+                            fontWeight: FontWeight.w600),
+                      ),
 
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              /*decoration: BoxDecoration(
+                /*decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(5.0),
                   ),
@@ -408,9 +408,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   ],
               //    color: Colors.blueGrey
               ),*/
-              margin: EdgeInsets.all(10),
-              height: 150.0)));
-    });
+                margin: EdgeInsets.all(10),
+                height: 150.0)));
+      });
+    }
     return containers;
   }
 }
